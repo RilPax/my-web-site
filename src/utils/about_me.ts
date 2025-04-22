@@ -1,0 +1,6 @@
+export const about_me: string[] = [
+    "One day, I randomly stumbled upon a video where a website spun around in 3D like a spaceship. I was hooked instantly. A couple of days later, I found myself trying to figure out how that kind of magic was even possible. That’s how my journey into frontend development began — unexpectedly, but totally meant to be.",
+    "Since then, I’ve fallen in love with the process: taking a blank screen and turning it into something interactive, stylish, and user-friendly. Sometimes you're coding, sometimes you're creating — and in the end, you get something people can click, scroll, and get a little wow-ed by. That’s the good stuff.",
+    "For me, code isn’t just a technical thing — it’s a way to express ideas. I don’t just want things to work, I want them to feel awesome. I want them to look great and be solid under the hood.",
+    "I’m learning every day. Sometimes it feels like my brain is about to melt — and honestly, those are the best moments. Because right after that comes the “Ohhh! Got it now!” And that feeling? That’s what keeps me going.",
+]
