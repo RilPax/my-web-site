@@ -1,11 +1,11 @@
 type contact = {
-    src: string,
+    id: string,
     link: string,
     title: string
 }
 
 export const contacts: contact[] = [
-    {title: 'Instagram', link: './', src: './'},
-    {title: 'GitHub', link: './', src: './'},
-    {title: 'Telegram', link: './', src: './'}
+    {title: 'Instagram', link: 'https://www.instagram.com/fi.fate?igsh=aXoxNHBvd3R3MTli', id: 'icon-instagram'},
+    {title: 'GitHub', link: 'https://github.com/RilPax', id: 'icon-github'},
+    {title: 'Telegram', link: 'https://t.me/Fi_fate', id: 'icon-telegram'}
 ]

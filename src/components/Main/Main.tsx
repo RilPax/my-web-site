@@ -1,15 +1,16 @@
-import AboutMeSection from '../AboutMeSection/AboutMeSection'
-import ContactsSection from '../Contacts/ContactsSection'
-import MyProjectsSection from '../MyProjectsSection/MyProjectsSection'
-import StackSection from '../StackSection/StackSection'
-import './main.scss'
+import AboutSection from './About/AboutSection'
+import ContactsSection from './Contacts/Contacts'
+import ProjectsSection from './Projects/ProjectsSection'
+import StackSection from './Stack/StackSection'
+
+import './Main.scss'
 
 export default function Main() {
     return (
         <main className='main'>
-            <AboutMeSection />
+            <AboutSection />
             <StackSection />
-            <MyProjectsSection />
+            <ProjectsSection />
             <ContactsSection />
         </main>
     )

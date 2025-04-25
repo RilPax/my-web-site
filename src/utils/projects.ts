@@ -1,13 +1,13 @@
 type project = {
     src: string;
     title: string;
-    info: string
+    description: string
 }
 
 export const projects: project[] = [
     {
-        src:'/my_website.jpg',
+        src:'/my-site.png',
         title: 'My Web Site',
-        info: 'info'
+        description: 'info'
     }
 ]

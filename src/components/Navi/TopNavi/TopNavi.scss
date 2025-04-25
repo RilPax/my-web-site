@@ -1,0 +1,70 @@
+.top_navi {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 1px solid var(--color-accent);
+    z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    &--hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    a {
+        color: var(--color-buttons);
+        transition: color 0.3s ease;
+        font-weight: bold;
+
+        &:hover {
+            color: var(--color-text-main);
+        }
+
+    }
+
+    &__tabs {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+
+        a {
+            display: block;
+            color: var(--color-text-main);
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: var(--color-buttons);
+            }
+        }
+
+        :last-child {
+            border: 1px solid var(--color-buttons);
+            padding: 10px;
+            color: var(--color-buttons);
+            transition: color 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+                color: var(--color-main);
+                background-color: var(--color-accent);
+            }
+        }
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: -1;
+        inset: 0;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px); /* для Safari */
+    }
+}
+

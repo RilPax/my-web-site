@@ -1,17 +1,44 @@
 @import url('./fonts/fonts.scss');
 
+:root {
+    --color-base: #3e3f40;
+    --color-accent: #39FF14;
+    --color-text-main: #F0F0F0;
+    --color-text-secondary: #C2C2C2;
+    --color-buttons: var(--color-accent);
+    
+    
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-main);
+    font-size: 2.5rem;
+}
+
+a {
+    color: var(--color-text-main);
+}
+
+span, p {
+    color: var(--color-text-secondary);
+    font-size: 1.2rem;
+}
+
 * {
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    color: silver;
     font-family: 'Tech-Mono-Regular', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #012749;
+    background-color: var(--color-base);
     padding: 0px 150px;
 }
 

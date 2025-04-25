@@ -1,0 +1,80 @@
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    align-items: flex-start;
+
+    &__heading {
+        border-bottom: 2px solid var(--color-accent);
+    }
+
+    &__info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        align-items: center;
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            li {
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                align-items: center;
+                gap: 2px;
+                .decorative-element {
+                    width: 13px;
+                    aspect-ratio: 1/1;
+                    border: 2px solid var(--color-accent);
+                    border-radius: 50%;
+                    position: relative;
+                    margin: 103px 0;
+
+                    &::after, &::before {
+                        position: absolute;
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 100px;
+                        background-color: var(--color-accent);
+                        right: 50%;
+                    }
+
+                    &::after {  
+                        bottom: 14px;
+                    }
+
+                    &::before {
+                        top: 14px;
+                    }
+                }
+
+                .container {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    top: calc(50% - 71px);
+
+                    span {
+                        max-width: 100px;
+                        text-align: center;
+                    }
+                }
+
+                .right {
+                    right: 100px;
+                }
+
+                .left {
+                    left: 100px;
+                }
+
+            }
+        }
+    }
+}

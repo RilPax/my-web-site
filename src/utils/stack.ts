@@ -1,12 +1,39 @@
 type stackItem = {
     title: string;
-    info: string
+    id: string
 }
 
 export const stack: stackItem[] = [
-    {title: 'Layout', info: 'HTML / CSS / SCSS'},
-    {title: 'Language', info: 'JavaScript / TypeScript'},
-    {title: 'Framework', info: 'React'},
-    {title: 'Methodology', info: 'BEM / MVP / OOP'},
-    {title: 'Module bundler', info: 'Webpack / Vite'},
+    {
+        title: 'HTML',
+        id: 'html'
+    },
+    {
+        title: 'CSS',
+        id: 'css'
+    },
+    {
+        title: 'JavaScript',
+        id: 'js'
+    },
+    {
+        title: 'TypeScript',
+        id: 'ts'
+    },
+    {
+        title: 'React',
+        id: 'react'
+    },
+    {
+        title: 'SASS',
+        id: 'sass'
+    },
+    {
+        title: 'Vite',
+        id: 'vite'
+    },
+    {
+        title: 'Webpack',
+        id: 'webpack'
+    },
 ]
