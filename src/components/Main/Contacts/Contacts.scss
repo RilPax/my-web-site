@@ -1,11 +1,11 @@
 .contacts {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 150px;
 
     &__heading {
-        border-bottom: 2px solid var(--color-accent);
+        color: var(--color-accent);
     }
 
     &__info {
@@ -31,6 +31,7 @@
             margin: 40px 0px;
             padding: 20px 30px;
             border: 2px solid var(--color-accent);
+            border-radius: 10px;
             color: var(--color-accent);
             transition: color 0.3s ease, background-color 0.3s ease;
             font-weight: bold;
@@ -39,6 +40,25 @@
                 color: var(--color-base);
                 background-color: var(--color-accent);
             }
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+
+            a {
+                margin: 0;
+                padding: 0;
+                border: none;
+
+                &:hover {
+                    color: var(--color-text-main);
+                    background-color: var(--color-base);
+                }
+
+            }
+
         }
     }
 }

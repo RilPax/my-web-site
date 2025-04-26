@@ -1,8 +1,12 @@
 import { stack } from '../../../utils/stack'
 import StackSectionItem from './Item/StackSectionItem'
+import { useMediaQuery } from 'react-responsive'
 import './stackSection.scss'
 
 export default function StackSection() {
+
+    const isTabletOrMobile = useMediaQuery({maxWidth: '769px'})
+
     return (
         <section className="stack" id='stack'>
             <h2 className="stack__heading">
@@ -18,7 +22,8 @@ export default function StackSection() {
                     key={index} 
                     id={stackItem.id}
                     title={stackItem.title}
-                    className={index % 2 === 0 ? 'right' : 'left'} />)
+                    isMobileOrTablet={isTabletOrMobile}
+                    className={isTabletOrMobile ? '' : index % 2 === 0 ? 'right' : 'left' } />)
                 }
                 </ul>
             </div>

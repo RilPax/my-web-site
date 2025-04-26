@@ -11,12 +11,12 @@
         border: 3px solid var(--color-accent);
         border-radius: 50%;
         overflow: hidden;
+        aspect-ratio: 1/1;
 
         img {
             display: block;
             width: 100%;
             object-fit: cover;
-            aspect-ratio: 1/1;
         }
     }
 
@@ -27,23 +27,36 @@
         gap: 20px;
 
         h1 {
-            font-size: 1rem;
+            font-size: clamp(2rem, 8vw, 5rem);
+            text-align: center;
             color: var(--color-accent);
-        }
-        h2 {
-            font-size: 3rem;
+            font-weight: 900;
         }
 
         span {
-            font-size: 5rem;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            text-align: center;
         }
+    }
+}
 
-        &_green_dot {
-            display: inline;
-            width: 5px;
-            height: 5px;
-            background-color: var(--color-accent);
-            border-radius: 50%;
+@media (max-width: 1025px) {
+    .header {
+        flex-direction: column;
+        margin-top: 120px;
+
+        &__image {
+            margin: 50px;
+        }
+    }
+}
+
+@media (max-width: 769px) {
+    .header {
+        &__image {
+            width: 100%;
+            margin: 0;
+            flex: none;
         }
     }
 }

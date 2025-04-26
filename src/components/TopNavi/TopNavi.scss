@@ -47,6 +47,7 @@
 
         :last-child {
             border: 1px solid var(--color-buttons);
+            border-radius: 10px;
             padding: 10px;
             color: var(--color-buttons);
             transition: color 0.3s ease, background-color 0.3s ease;
@@ -60,7 +61,7 @@
     &::before {
         content: '';
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.8);
         z-index: -1;
         inset: 0;
         backdrop-filter: blur(10px);
@@ -68,3 +69,12 @@
     }
 }
 
+@media (max-width: 769px) {
+    .top_navi {
+        padding: 20px 20px;
+        &__tabs {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

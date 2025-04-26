@@ -1,10 +1,9 @@
 @import url('./fonts/fonts.scss');
 
 :root {
-    --color-base: #3e3f40;
-    --color-accent: #39FF14;
+    --color-base: #080808;
+    --color-accent: #ff9900;
     --color-text-main: #F0F0F0;
-    --color-text-secondary: #C2C2C2;
     --color-buttons: var(--color-accent);
     
     
@@ -20,8 +19,9 @@ a {
 }
 
 span, p {
-    color: var(--color-text-secondary);
+    color: var(--color-text-main);
     font-size: 1.2rem;
+    
 }
 
 * {
@@ -30,7 +30,7 @@ span, p {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    font-family: 'Tech-Mono-Regular', sans-serif;
+    font-family: sans-serif;
 }
 
 html {
