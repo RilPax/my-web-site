@@ -9,11 +9,6 @@ export default function TopNavi() {
     const [showNav, setShowNav] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const tabletOrMobile = useMediaQuery({maxWidth: '769px'})
-    const [clicked, setClicked] = useState(false)
-
-    function handleClick() {
-
-    }
 
     useEffect(() => {
         const handleScroll = () => {
