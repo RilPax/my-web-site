@@ -129,6 +129,9 @@
                     }
 
                     a {
+
+                        border: 2px solid var(--color-base);
+
                         &:hover {
                             color: var(--color-accent);
                             background-color: var(--color-base);
