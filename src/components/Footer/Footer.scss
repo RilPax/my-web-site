@@ -1,3 +1,5 @@
+@use '../../variables' as *;
+
 .footer {
     display: flex;
     align-items: center;
@@ -10,7 +12,7 @@
         text-align: center;
 
         &:hover {
-            color: var(--color-accent);
+            color: $color-accent;
         }
     }
 }

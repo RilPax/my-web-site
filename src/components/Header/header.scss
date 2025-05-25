@@ -1,14 +1,16 @@
+@use '../../variables.scss' as *;
+
 .header {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 50px;   
     align-items: center;
-    min-height: 100vh;
+    margin: 150px 0;
 
     &__image {
         display: flex;
         flex: 1;
-        border: 3px solid var(--color-accent);
+        border: 3px solid $color-accent;
         border-radius: 50%;
         overflow: hidden;
         aspect-ratio: 1/1;
@@ -29,7 +31,7 @@
         h1 {
             font-size: clamp(2rem, 8vw, 5rem);
             text-align: center;
-            color: var(--color-accent);
+            color: $color-accent;
             font-weight: 900;
         }
 

@@ -1,0 +1,28 @@
+@use '../../variables' as *;
+
+div {
+    .cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: $color-text-main;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transition: background 0.3s ease;
+
+    &-active {
+        background: rgb(0, 190, 0);
+    };
+
+    &__shadow {
+        position: fixed;
+        width: 24px;
+        height: 24px;
+        border: 1px solid $color-text-main;
+        border-radius: 50%;
+        z-index: 9998;
+        pointer-events: none;
+    }
+}
+}

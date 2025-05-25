@@ -1,11 +1,12 @@
+@use '../../../variables' as *;
+
 .stack {
     display: flex;
     flex-direction: column;
-    gap: 150px;
     align-items: center;
 
     &__heading {
-        color: var(--color-accent);
+        color: $color-accent;
     }
 
     &__info {
@@ -33,7 +34,7 @@
                 .decorative-element {
                     width: 13px;
                     aspect-ratio: 1/1;
-                    border: 2px solid var(--color-accent);
+                    border: 2px solid $color-accent;
                     border-radius: 50%;
                     position: relative;
                     margin: 103px 0;
@@ -44,7 +45,7 @@
                         display: block;
                         width: 1px;
                         height: 100px;
-                        background-color: var(--color-accent);
+                        background-color: $color-accent;
                         right: 50%;
                     }
 
