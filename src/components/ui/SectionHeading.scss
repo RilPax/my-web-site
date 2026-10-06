@@ -1,0 +1,30 @@
+@use '../../styles/tokens' as *;
+
+.section-heading {
+  display: grid;
+  gap: 24px;
+  margin-bottom: clamp(48px, 7vw, 96px);
+
+  &__meta {
+    @include mono;
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  &__line {
+    display: block;
+    height: 1px;
+    background: var(--line);
+    transform-origin: left;
+  }
+
+  &__title {
+    font-size: clamp(2.6rem, 7vw, 6.5rem);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+}

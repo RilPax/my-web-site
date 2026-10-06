@@ -1,5 +1,5 @@
 {
-  "name": "ruff-connect",
+  "name": "my-web-site",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/space-grotesk": "^5.3.0",
     "gsap": "^3.13.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-responsive": "^10.0.1"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

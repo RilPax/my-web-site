@@ -1,0 +1,97 @@
+@use '../../styles/tokens' as *;
+
+html.is-loading {
+  overflow: hidden;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+
+  &__panels {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__panel {
+    display: block;
+    background: var(--surface);
+    // Slight overlap hides sub-pixel seams between columns.
+    margin-inline: -1px;
+
+    &:nth-child(2) {
+      background: #111113;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: var(--gutter);
+  }
+
+  &__logo {
+    color: var(--accent);
+  }
+
+  &__words {
+    position: relative;
+    height: clamp(3rem, 8vw, 6rem);
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &__word {
+    position: absolute;
+    inset: 0;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+
+  &__bottom {
+    @include mono;
+    position: absolute;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: calc(var(--gutter) + 16px);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  &__counter {
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 0.8;
+    color: var(--text);
+  }
+
+  &__bar {
+    position: absolute;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: var(--gutter);
+    height: 2px;
+    background: var(--line);
+
+    span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+  }
+}

@@ -1,85 +1,93 @@
+import { useEffect, useRef } from 'react'
+import { gsap, FINE_POINTER } from '../../lib/gsap'
+import './Cursor.scss'
 
-import "./Cursor.scss";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import CustomEase from "gsap/CustomEase";
-import { useMediaQuery } from "react-responsive";
+const INTERACTIVE = 'a, button, [data-cursor]'
 
-gsap.registerPlugin(CustomEase);
-
-CustomEase.create("shadow", ".24,-0.45,.57,1.96");
-
+/**
+ * Dot + trailing ring cursor. Uses event delegation, so it reacts to any
+ * link/button on the page — including ones rendered later. Elements with
+ * `data-cursor="Label"` expand the ring and show the label inside it.
+ */
 export default function Cursor() {
+  const dotRef = useRef<HTMLDivElement>(null)
+  const ringRef = useRef<HTMLDivElement>(null)
+  const labelRef = useRef<HTMLSpanElement>(null)
 
-    const tabletOrMobile = useMediaQuery({maxWidth: '769px'})
+  useEffect(() => {
+    const mm = gsap.matchMedia()
 
-    const cursorRef = useRef<HTMLDivElement>(null);
-    const shadowRef = useRef<HTMLDivElement>(null);
+    mm.add(FINE_POINTER, () => {
+      const dot = dotRef.current!
+      const ring = ringRef.current!
+      const label = labelRef.current!
+      const root = document.documentElement
 
-    useEffect(() => {
-        const links = document.querySelectorAll('a');
+      root.classList.add('has-cursor')
+      gsap.set([dot, ring], { xPercent: -50, yPercent: -50, opacity: 0 })
 
-        const scaleShadow = (isActive: boolean) => {
-            gsap.to(shadowRef.current, {
-                scale: isActive ? 1.4 : 1,
-                duration: 0.2,
-                ease: "shadow"
-            });
-        };
+      const dotX = gsap.quickTo(dot, 'x', { duration: 0.1, ease: 'power3.out' })
+      const dotY = gsap.quickTo(dot, 'y', { duration: 0.1, ease: 'power3.out' })
+      const ringX = gsap.quickTo(ring, 'x', { duration: 0.55, ease: 'power3.out' })
+      const ringY = gsap.quickTo(ring, 'y', { duration: 0.55, ease: 'power3.out' })
 
-        const toggleCursorActive = (isActive: boolean) => {
-            cursorRef.current?.classList.toggle('cursor-active', isActive);
-        };
+      let visible = false
 
-        const handleLinkHover = (isActive: boolean) => {
-            scaleShadow(isActive);
-            toggleCursorActive(isActive);
-        };
+      const onMove = (e: PointerEvent) => {
+        if (!visible) {
+          visible = true
+          gsap.set([dot, ring], { x: e.clientX, y: e.clientY })
+          gsap.to([dot, ring], { opacity: 1, duration: 0.3 })
+        }
+        dotX(e.clientX)
+        dotY(e.clientY)
+        ringX(e.clientX)
+        ringY(e.clientY)
+      }
 
-        const onLinkMouseEnter = () => handleLinkHover(true);
-        const onLinkMouseLeave = () => handleLinkHover(false);
+      const onOver = (e: PointerEvent) => {
+        const target = (e.target as Element).closest<HTMLElement>(INTERACTIVE)
+        const text = target?.dataset.cursor
 
-        links.forEach(link => {
-            link.addEventListener('mouseover', onLinkMouseEnter);
-            link.addEventListener('mouseout', onLinkMouseLeave);
-        });
+        ring.classList.toggle('cursor__ring--hover', Boolean(target))
+        ring.classList.toggle('cursor__ring--label', Boolean(text))
+        dot.classList.toggle('cursor__dot--hidden', Boolean(target))
+        if (text) label.textContent = text
+      }
 
-        const updateCursorPosition = (event: MouseEvent) => {
-            const { clientX, clientY } = event;
+      const onLeaveWindow = () => {
+        visible = false
+        gsap.to([dot, ring], { opacity: 0, duration: 0.3 })
+      }
 
-            gsap.to(cursorRef.current, {
-                x: clientX - 4,
-                y: clientY - 4,
-                duration: 0.1,
-                ease: 'power3.out'
-            });
+      const onDown = () => gsap.to(ring, { scale: 0.8, duration: 0.2 })
+      const onUp = () => gsap.to(ring, { scale: 1, duration: 0.4, ease: 'elastic.out(1, 0.4)' })
 
-            gsap.to(shadowRef.current, {
-                x: clientX - 12,
-                y: clientY - 12,
-                duration: 0.5,
-                ease: 'power2.out'
-            });
-        };
+      window.addEventListener('pointermove', onMove)
+      document.addEventListener('pointerover', onOver)
+      document.documentElement.addEventListener('pointerleave', onLeaveWindow)
+      window.addEventListener('pointerdown', onDown)
+      window.addEventListener('pointerup', onUp)
 
-        window.addEventListener('mousemove', updateCursorPosition);
+      return () => {
+        root.classList.remove('has-cursor')
+        window.removeEventListener('pointermove', onMove)
+        document.removeEventListener('pointerover', onOver)
+        document.documentElement.removeEventListener('pointerleave', onLeaveWindow)
+        window.removeEventListener('pointerdown', onDown)
+        window.removeEventListener('pointerup', onUp)
+      }
+    })
 
-        return () => {
-            window.removeEventListener('mousemove', updateCursorPosition);
-            links.forEach(link => {
-                link.removeEventListener('mouseover', onLinkMouseEnter);
-                link.removeEventListener('mouseout', onLinkMouseLeave);
-            });
-        };
-    }, []);
+    return () => mm.revert()
+  }, [])
 
-    return (
-        <>
-            {!tabletOrMobile && <> 
-                <div ref={cursorRef} className="cursor"></div>
-                <div ref={shadowRef} className="cursor__shadow"></div>
-            </>
-            }
-        </>
-    );
+  return (
+    <div className='cursor' aria-hidden>
+      <div className='cursor__ring' ref={ringRef}>
+        <span className='cursor__label' ref={labelRef} />
+      </div>
+      <div className='cursor__dot' ref={dotRef} />
+    </div>
+  )
 }

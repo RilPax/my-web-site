@@ -1,0 +1,142 @@
+@use '../../styles/tokens' as *;
+
+.contact {
+  overflow: hidden;
+
+  &__glow {
+    position: absolute;
+    left: 50%;
+    bottom: -40vmax;
+    width: 80vmax;
+    height: 80vmax;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(255, 153, 0, 0.16), transparent 60%);
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  &__eyebrow {
+    @include mono;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  &__hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-block: clamp(32px, 5vw, 56px) clamp(64px, 9vw, 120px);
+  }
+
+  &__title {
+    max-width: 8em;
+    font-size: clamp(3.2rem, 11vw, 10.5rem);
+    font-weight: 600;
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+  }
+
+  &__circle {
+    position: relative;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: clamp(140px, 16vw, 220px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    transition: background-color 0.4s ease;
+
+    > svg:last-child {
+      transition: transform 0.5s $ease-out;
+    }
+
+    @include hover {
+      background: var(--text);
+
+      > svg:last-child {
+        transform: rotate(45deg) scale(1.15);
+      }
+    }
+  }
+
+  &__ring {
+    position: absolute;
+    inset: 6%;
+    width: 88%;
+    height: 88%;
+
+    text {
+      @include mono;
+      font-size: 15px;
+      fill: currentColor;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  &__block {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+  }
+
+  &__label {
+    @include mono;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  &__email {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 500;
+    word-break: break-all;
+  }
+
+  &__socials {
+    display: grid;
+    gap: 12px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.15rem;
+    }
+  }
+
+  &__resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.15rem;
+  }
+
+  @include tablet {
+    &__hero {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__circle {
+      align-self: flex-end;
+    }
+
+    &__row {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use '../../styles/tokens' as *;
+
+.mbtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 30px;
+  border-radius: 999px;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: 1rem;
+  isolation: isolate;
+  transition: color 0.4s $ease-out, border-color 0.4s $ease-out;
+  will-change: transform;
+
+  &__fill {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    transform: translateY(101%);
+    transition: transform 0.5s $ease-out;
+  }
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+
+  &--solid {
+    background: var(--accent);
+    color: var(--bg);
+
+    .mbtn__fill {
+      background: var(--text);
+    }
+  }
+
+  &--outline {
+    border: 1px solid var(--line);
+    color: var(--text);
+
+    .mbtn__fill {
+      background: var(--accent);
+    }
+
+    @include hover {
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+  }
+
+  @include hover {
+    .mbtn__fill {
+      transform: translateY(0);
+    }
+  }
+}

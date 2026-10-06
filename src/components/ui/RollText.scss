@@ -1,0 +1,33 @@
+@use '../../styles/tokens' as *;
+
+.roll {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.2;
+
+  &__inner,
+  &::after {
+    display: block;
+    transition: transform 0.5s $ease-out;
+  }
+
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    color: var(--accent);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover .roll,
+  button:hover .roll {
+    .roll__inner,
+    &::after {
+      transform: translateY(-100%);
+    }
+  }
+}

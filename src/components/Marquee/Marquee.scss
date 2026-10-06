@@ -1,0 +1,46 @@
+@use '../../styles/tokens' as *;
+
+.marquee {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding-block: 24px;
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+
+  &__row {
+    display: flex;
+    white-space: nowrap;
+
+    &--1 {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--muted);
+
+      .marquee__star {
+        color: var(--muted);
+      }
+    }
+  }
+
+  &__track {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 48px);
+    padding-right: clamp(20px, 3vw, 48px);
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  &__star {
+    width: 0.45em;
+    height: 0.45em;
+    color: var(--accent);
+  }
+}
